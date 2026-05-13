@@ -23,7 +23,7 @@ module.exports = {
     const name = interaction.options.getString('name');
     const id = `sb-${interaction.guildId}-${Date.now()}`;
 
-    const msg = await interaction.reply({ embeds: [buildScoreboardEmbed({ name, scores: {} })], fetchReply: true });
+    const { resource: msg } = await interaction.reply({ embeds: [buildScoreboardEmbed({ name, scores: {} })], withResponse: true });
 
     const data = db.get();
     if (!data.scoreboards) data.scoreboards = {};

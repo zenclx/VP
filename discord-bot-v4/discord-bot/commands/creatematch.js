@@ -339,7 +339,7 @@ module.exports = {
       new ButtonBuilder().setCustomId(`forcestart_${matchId}`).setLabel('Force Start').setStyle(ButtonStyle.Danger).setEmoji('🚀'),
     );
 
-    const msg = await interaction.reply({ embeds: [buildQueueEmbed(match)], components: [joinRow], fetchReply: true });
+    const { resource: msg } = await interaction.reply({ embeds: [buildQueueEmbed(match)], components: [joinRow], withResponse: true });
     match.messageId = msg.id;
 
     const data = db.get();
